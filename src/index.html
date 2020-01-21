@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Demo</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <script type="module" src="rating.js"></script>
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
@@ -15,8 +16,17 @@
             align-items: center;
             flex-direction: column;
         }
+        rnjs-rating::part(icon) {
+            width: 200px;
+            height: 200px;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 166 166"><polygon fill="rgb(165,255,214)" points="83 26.8 65.7 61.8 27.1 67.4 55 94.7 48.5 133.2 83 115 117.5 133.2 111 94.7 138.9 67.4 100.3 61.8 83 26.8 83 26.8"/></svg>');
+        }
     </style>
 </head>
 <body>
+    <rnjs-rating></rnjs-rating>
+    <rnjs-rating>
+        <img slot="rating-icon" src="./assets/replace-star.png" />
+    </rnjs-rating>
 </body>
 </html>
