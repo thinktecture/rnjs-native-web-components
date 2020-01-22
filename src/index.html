@@ -9,12 +9,15 @@
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
-            padding: 0;
-            height: 100vh;
+            padding: 40px;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+        }
+        p {
+            text-align: center;
         }
         rnjs-rating::part(icon) {
             width: 200px;
@@ -24,8 +27,20 @@
     </style>
 </head>
 <body>
-    <rnjs-rating></rnjs-rating>
     <rnjs-rating>
+        <p slot="headline">bit.ly/ngwc2019</p>
+    </rnjs-rating>
+    <rnjs-rating rating="3" max-rating="8">
+        <p slot="headline">Filled rating</p slot="headline">
+    </rnjs-rating>
+    <rnjs-rating disabled="disabled">
+        <p slot="headline">Disabled rating</p slot="headline">
+    </rnjs-rating>
+    <rnjs-rating max-rating="4" rating="7">
+        <p slot="headline">Failed rating</p>
+    </rnjs-rating>
+    <rnjs-rating>
+        <p slot="headline">Replace image</p>
         <img slot="rating-icon" src="./assets/replace-star.png" />
     </rnjs-rating>
 </body>

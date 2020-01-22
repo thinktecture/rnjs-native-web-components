@@ -15,7 +15,7 @@ img {
     width: 60px;
     height: 60px;
 }
-slot {
+slot[name="rating-icon"] {
    display: none; 
 }
 
@@ -40,9 +40,12 @@ slot {
     height: 60px;
 }
 </style>
-<div part=„rating“>
+<slot name="headline">
+      <p>Hello World!</p>
+</slot>
+<div part="rating">
     <slot name="rating-icon">
-        <div part="star" class="rating-star"></div>
+        <div class="rating-star"></div>
     </slot>
 </div>
 `;
@@ -55,18 +58,15 @@ export class Rating extends HTMLElement {
 
     constructor() {
         super();
-        const shadowRoot = this.attachShadow({ mode: 'closed' });
-        shadowRoot.appendChild(template.content.cloneNode(true));
-        this.element = shadowRoot.querySelector('div');
-
-        const slot = this.element.querySelector('slot[name="rating-icon"]');
-        // default slot node, which is set in the template
+        this.attachShadow({mode: 'open'});
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
+        this.element = this.shadowRoot.querySelector('div');
+        const slot = this.element.querySelector('slot');
         this.slotNode = slot.querySelector('div');
-        slot.addEventListener('slotchange', e => {
-            const assignedNodes = slot.assignedNodes();
-            if (assignedNodes[0]) {
-                // slot node which is set in the index.html
-                this.slotNode = assignedNodes[0];
+        slot.addEventListener('slotchange', event => {
+            const node = slot.assignedNodes()[0];
+            if (node) {
+                this.slotNode = node;
                 this.render();
             }
         });
