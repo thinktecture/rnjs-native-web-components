@@ -27,19 +27,19 @@
     </style>
 </head>
 <body>
-    <rnjs-rating>
-        <p slot="headline">bit.ly/ngwc2019</p>
+    <rnjs-rating rating-name="test1">
+        <p slot="headline">Normal Rating</p>
     </rnjs-rating>
-    <rnjs-rating rating="3" max-rating="8">
+    <rnjs-rating rating-name="test2" rating="3" max-rating="8">
         <p slot="headline">Filled rating</p slot="headline">
     </rnjs-rating>
-    <rnjs-rating disabled="disabled">
+    <rnjs-rating rating-name="test3" disabled="disabled">
         <p slot="headline">Disabled rating</p slot="headline">
     </rnjs-rating>
-    <rnjs-rating max-rating="4" rating="7">
+    <rnjs-rating rating-name="test4" max-rating="4" rating="7">
         <p slot="headline">Failed rating</p>
     </rnjs-rating>
-    <rnjs-rating>
+    <rnjs-rating rating-name="test5">
         <p slot="headline">Replace image</p>
         <img slot="rating-icon" src="./assets/replace-star.png" />
     </rnjs-rating>

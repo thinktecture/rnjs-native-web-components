@@ -72,6 +72,14 @@ export class Rating extends HTMLElement {
         });
     } 
 
+    get ratingName() {
+        return this.getAttribute('rating-name');
+    }
+
+    set ratingName(value) {
+        this.setAttribute('rating-name', value);
+    }
+
     get maxRating() {
         return +this.getAttribute('max-rating');
     }
@@ -85,7 +93,6 @@ export class Rating extends HTMLElement {
     }
     
     set rating(value) {
-        console.log('set rating to value', value);
         if (value < 0) {
             throw new Error('The rating must be higher than zero.');
         }
@@ -134,10 +141,10 @@ export class Rating extends HTMLElement {
     }
     
     attributeChangedCallback(name, oldVal, newVal) {
-        console.log('Observed attribute changed', name, oldVal, newVal);
         if (oldVal === newVal) {
             return;
         }
+        console.log('Observed attribute changed', this.ratingName, `prop: ${name}`, `old: ${oldVal}`, `new: ${newVal}`);
         
         switch (name) {
             case 'rating':
