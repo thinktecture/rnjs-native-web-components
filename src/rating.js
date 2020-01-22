@@ -58,9 +58,9 @@ export class Rating extends HTMLElement {
 
     constructor() {
         super();
-        this.attachShadow({mode: 'open'});
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
-        this.element = this.shadowRoot.querySelector('div');
+        const root = this.attachShadow({mode: 'closed'});
+        root.appendChild(template.content.cloneNode(true));
+        this.element = root.querySelector('div');
         const slot = this.element.querySelector('slot');
         this.slotNode = slot.querySelector('div');
         slot.addEventListener('slotchange', event => {
